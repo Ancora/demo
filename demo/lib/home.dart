@@ -1,4 +1,6 @@
+//import 'package:demo/demo.dart';
 import 'package:flutter/material.dart';
+//import 'package:provider/provider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -51,6 +53,8 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   _onClickGoogle() {
+    //DemoServices services = DemoServices.get(context);
+    //services.interface.launch('https://google.com');
     launch('https://google.com');
   }
 }
