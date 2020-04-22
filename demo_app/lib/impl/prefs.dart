@@ -1,42 +1,37 @@
 import 'dart:async';
-import 'package:demo/demo.dart';
+import 'package:demo/prefs.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-abstract class PrefsInterface {
-  void setBool(String key, bool b);
-  void setInt(String key, int i);
-  void setString(String key, String s);
+class AppPrefs implements PrefsInterface {
+  Future<SharedPreferences> get sharedPrefs => SharedPreferences.getInstance();
 
-  FutureOr<bool> getBool(String key);
-  FutureOr<int> getInt(String key);
-  FutureOr<String> getString(String key);
-}
-
-class Prefs {
-  static get(context) => DemoServices.get(context).prefs;
-  PrefsInterface prefs;
-  Prefs(this.prefs);
-
-  void setBool(String key, bool b) {
+  void setBool(String key, bool b) async {
+    final prefs = await sharedPrefs;
     prefs.setBool(key, b);
   }
 
-  void setInt(String key, int i) {
+  void setInt(String key, int i) async {
+    final prefs = await sharedPrefs;
     prefs.setInt(key, i);
   }
 
-  void setString(String key, String s) {
+  void setString(String key, String s) async {
+    final prefs = await sharedPrefs;
     prefs.setString(key, s);
   }
 
-  FutureOr<bool> getBool(String key) {
+  FutureOr<bool> getBool(String key) async {
+    final prefs = await sharedPrefs;
     return prefs.getBool(key);
   }
 
-  FutureOr<int> getInt(String key) {
+  FutureOr<int> getInt(String key) async {
+    final prefs = await sharedPrefs;
     return prefs.getInt(key);
   }
 
-  FutureOr<String> getSring(String key) {
+  FutureOr<String> getString(String key) async {
+    final prefs = await sharedPrefs;
     return prefs.getString(key) ?? '';
   }
 }
